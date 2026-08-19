@@ -16,6 +16,19 @@ def agregar_jugador():
     print("Se agrego a", nombre, "al catalogo!")
 
 
+# Funcion para ver todos los jugadores con sus atributos
+def ver_jugadores():
+    print("\n--- TODOS LOS JUGADORES ---")
+    if len(catalogo_jugadores) == 0:
+        print("El catalogo esta vacio")
+    # recorremos el diccionario con .items() para tener la llave y el valor
+    for nombre, datos in catalogo_jugadores.items():
+        print(nombre)
+        print("   Equipo:", datos["equipo"])
+        print("   Posicion:", datos["posicion"])
+        print("   Goles:", datos["goles"])
+
+
 
 opcion = ""
 while opcion != "4":
@@ -27,7 +40,7 @@ while opcion != "4":
     opcion = input("Elija una opcion: ")
 
     if opcion == "1":
-        print("Esta opcion todavia no esta lista")
+        ver_jugadores()
     elif opcion == "2":
         agregar_jugador()
     elif opcion == "3":
