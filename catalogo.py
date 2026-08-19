@@ -29,6 +29,25 @@ def ver_jugadores():
         print("   Goles:", datos["goles"])
 
 
+# Funcion para modificar un atributo de un jugador que ya existe
+def modificar_jugador():
+    nombre = input("Nombre del jugador a modificar: ")
+    # primero revisamos que el jugador si exista en el catalogo
+    if nombre in catalogo_jugadores:
+        atributo = input("Que atributo quiere cambiar? (equipo / posicion / goles): ")
+        if atributo in catalogo_jugadores[nombre]:
+            nuevo_valor = input("Nuevo valor: ")
+            # los goles son un numero, entonces hay que convertirlo
+            if atributo == "goles":
+                nuevo_valor = int(nuevo_valor)
+            catalogo_jugadores[nombre][atributo] = nuevo_valor
+            print("Se cambio el atributo", atributo, "de", nombre)
+        else:
+            print("Ese atributo no existe")
+    else:
+        print("Ese jugador no esta en el catalogo")
+
+
 
 opcion = ""
 while opcion != "4":
@@ -44,7 +63,7 @@ while opcion != "4":
     elif opcion == "2":
         agregar_jugador()
     elif opcion == "3":
-        print("Esta opcion todavia no esta lista")
+        modificar_jugador()
     elif opcion == "4":
         print("Adios!")
     else:
